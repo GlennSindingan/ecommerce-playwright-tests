@@ -1,0 +1,14 @@
+# Python virtual environment
+venv/
+env/
+
+# Python cache files
+__pycache__/
+.pytest_cache/
+
+# Playwright test results and reports
+test-results/
+playwright-report/
+
+# Environment variables (keeps passwords/emails safe)
+.env

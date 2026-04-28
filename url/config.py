@@ -1,0 +1,1 @@
+LOGIN_URL = "https://automationexercise.com/login"
