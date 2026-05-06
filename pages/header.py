@@ -8,6 +8,7 @@ class HeaderPage:
         # Header
         self.delete_link = page.get_by_role("link", name="Delete Account")
         self.login_link = page.get_by_role("link", name=" Signup / Login")
+        self.logout_link = page.get_by_role("link", name="Logout")
 
 
     def delete_account(self):
@@ -18,3 +19,6 @@ class HeaderPage:
 
     def get_logged_in_user_locator(self, username: str):
         return self.page.get_by_text(f"Logged in as {username}")
+
+    def click_logout_link(self):
+        self.logout_link.click()
