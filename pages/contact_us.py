@@ -9,6 +9,7 @@ class ContactPage:
         self.contact_subject = page.locator("[data-qa='subject']")
         self.contact_message = page.locator("[data-qa='message']")
         self.upload_button = page.locator("input[name='upload_file']")
+        self.submit_button = page.locator("input[name='submit-button']")
 
     def fill_contact_form(self, name: str, email: str, subject: str, message: str):
         self.contact_name.fill(name)
@@ -18,5 +19,8 @@ class ContactPage:
 
     def upload_file(self, file_path: str):
         self.upload_button.set_input_files(file_path)
+
+    def click_submit_button(self):
+        self.submit_button.click
 
 
