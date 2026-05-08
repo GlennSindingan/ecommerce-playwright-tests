@@ -11,6 +11,11 @@ def test_contact_form(page: Page):
     page.goto(HOMEPAGE_URL)
 
     header_page.click_contact_us_link()
-    contact_page.fill_contact_form("glenn", "glenn@gmail.com", "test", "thanks")
+    contact_page.fill_contact_form(
+        name="glenn",
+        email="glenn@gmail.com",
+        subject="test",
+        message="thanks"
+    )
     contact_page.upload_file("utils/dummy_upload.txt")
     contact_page.click_submit_button()

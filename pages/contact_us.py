@@ -21,6 +21,6 @@ class ContactPage:
         self.upload_button.set_input_files(file_path)
 
     def click_submit_button(self):
-        self.submit_button.click
+        self.submit_button.click()
 
 
