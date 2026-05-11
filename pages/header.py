@@ -12,6 +12,7 @@ class HeaderPage:
         self.product_link = page.get_by_role("link", name="Products")
         self.contact_link = page.get_by_role("link", name="Contact us")
         self.testcases_link = page.get_by_role("link", name="Test Cases").first
+        self.cart_link = page.get_by_role("link", name="Cart")
 
 
 
@@ -35,4 +36,7 @@ class HeaderPage:
 
     def click_testcases_link(self):
         self.testcases_link.click()
+
+    def click_cart_link(self):
+        self.cart_link.click()
 
