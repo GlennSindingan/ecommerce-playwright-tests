@@ -1,11 +1,12 @@
 from playwright.sync_api import Page, expect
 from pages.cart import CartPage
 from pages.header import HeaderPage
+from pages.product_details import ProductDetailsPage
 from pages.products import ProductPage
 from url.config import HOMEPAGE_URL
 
 
-def test_add_to_cart_page(page: Page):
+def test_add_to_cart(page: Page):
     header_page = HeaderPage(page)
     product_page = ProductPage(page)
     cart_page = CartPage(page)
@@ -28,4 +29,21 @@ def test_add_to_cart_page(page: Page):
     # Verify the Second Product (Men Tshirt)
     cart_page.verify_cart_row_details(1, "Rs. 400", "1", "Rs. 400")
 
-    # TODO: Complete the test case above
+def test_product_quantity_cart(page: Page):
+    product_page = ProductPage(page)
+    product_details = ProductDetailsPage(page)
+    cart_page = CartPage(page)
+    page.goto(HOMEPAGE_URL)
+
+    product_page.click_product_button()
+    expect(page).to_have_url("https://automationexercise.com/product_details/1")
+    product_details.set_amount("4")
+
+    product_details.click_add_to_cart()
+    product_page.click_view_cart()
+    cart_page.verify_cart_row_details(0, "Rs. 500", "4", "Rs. 2000")
+
+    #TODO : START TEST CASE 14
+
+
+

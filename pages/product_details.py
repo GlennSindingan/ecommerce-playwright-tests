@@ -6,6 +6,8 @@ class ProductDetailsPage:
         self.page = page
 
         self.info_box = page.locator(".product-information")
+        self.quantity_input = page.locator("#quantity")
+        self.add_to_cart = page.get_by_role("button", name="Add to cart")
 
 
         self.product_name = self.info_box.locator("h2")
@@ -15,3 +17,10 @@ class ProductDetailsPage:
         self.product_availability = self.info_box.locator("p").filter(has_text="Availability:")
         self.product_condition = self.info_box.locator("p").filter(has_text="Condition:")
         self.product_brand = self.info_box.locator("p").filter(has_text="Brand:")
+
+    def set_amount(self, amount: str):
+        self.quantity_input.fill(amount)
+
+    def click_add_to_cart(self):
+        self.add_to_cart.click()
+

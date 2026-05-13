@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
 
 class CartPage:
@@ -7,7 +7,7 @@ class CartPage:
 
         self.cart_items = page.locator("#cart_info_table tbody tr")
 
-def verify_cart_row_details(self, row_index: int, expected_price: str, expected_qty: str, expected_total: str):
+    def verify_cart_row_details(self, row_index: int, expected_price: str, expected_qty: str, expected_total: str):
         # 1. Grab the specific row we want to check (0 for the first shirt, 1 for the second)
         row = self.cart_items.nth(row_index)
         
