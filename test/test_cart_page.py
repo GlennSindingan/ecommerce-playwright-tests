@@ -43,7 +43,5 @@ def test_product_quantity_cart(page: Page):
     product_page.click_view_cart()
     cart_page.verify_cart_row_details(0, "Rs. 500", "4", "Rs. 2000")
 
-    #TODO : START TEST CASE 14
-
 
 
