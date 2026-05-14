@@ -6,8 +6,8 @@ class CartPage:
         self.page = page
 
         self.cart_items = page.locator("#cart_info_table tbody tr")
-        self.checkout_button = page.get_by_role("button", name="Proceed To Checkout")
-        self.register_login = page.get_by_text("Register / Login")
+        self.checkout_button = page.get_by_text("Proceed To Checkout")
+        self.register_login = page.get_by_role("link", name="Register / Login")
 
 
     def verify_cart_row_details(self, row_index: int, expected_price: str, expected_qty: str, expected_total: str):
