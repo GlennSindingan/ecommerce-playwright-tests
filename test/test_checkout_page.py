@@ -26,9 +26,14 @@ def test_checkout(self, page: Page):
 
     expect(page.get_by_text("Account Created!")).to_be_visible()
     login_page.click_continue()
-    expect(header_page.get_logged_in_user_locator(expected_username)).to_be_visible
+    expect(header_page.get_logged_in_user_locator(expected_username)).to_be_visible()
+    header_page.click_cart_link()
+    cart_page.click_checkout_button()
+    
 
-    # TODO continue test case 14 ---- step 12
+
+
+    # TODO continue test case 14
 
 
     
