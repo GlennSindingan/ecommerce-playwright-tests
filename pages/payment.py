@@ -11,7 +11,15 @@ class PaymentPage:
         self.expiration_year = page.locator("[data-qa='expiry-year']")
         self.confirm_order = page.locator("[data-qa='pay-button']")
 
-    def fill_payment_details(self, name, card-number, cvc, month-expiry, year-expiry):
+    def fill_payment_details(self, name, card_number, cvc, month_expiry, year_expiry):
+        self.card_name.fill(name)
+        self.card_number.fill(card_number)
+        self.cvc.fill(cvc)
+        self.expiration_month.fill(month_expiry)
+        self.expiration_year.fill(year_expiry)
+
+    def click_pay_and_confirm(self):
+        self.confirm_order.click()
         
 
 

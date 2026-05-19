@@ -10,3 +10,5 @@ my_address_data = {
     "zipcode": "90210",
     "mobile_number": "555-123-4567"
 }
+
+SUCCESS_MSG = "Congratulations! Your order has been confirmed!"
