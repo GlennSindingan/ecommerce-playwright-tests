@@ -43,5 +43,23 @@ def test_product_quantity_cart(page: Page):
     product_page.click_view_cart()
     cart_page.verify_cart_row_details(0, "Rs. 500", "4", "Rs. 2000")
 
+def test_remove_product(page: Page):
+    product_page = ProductPage(page)
+    cart_page = CartPage(page)
+    page.goto(HOMEPAGE_URL)
+
+    product_page.add_product_to_cart()
+    product_page.click_view_cart()
+    expect(cart_page.product_1_row).to_be_visible()
+    cart_page.click_delete_button()
+    expect(cart_page.product_1_row).to_be_hidden()
+    expect(cart_page.empty_cart_message).to_be_visible()
+
+    # TODO fix error for this test case
+    
+
+
+
+
 
 
