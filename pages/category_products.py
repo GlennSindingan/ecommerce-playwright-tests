@@ -1,12 +1,15 @@
+from playwright.sync_api import Page
+
+
 class CategoryPage:
     def __init__(self, page: Page):
         self.page = page
 
-        self.women_category = page.get_by_role("link", name="Women")
+        self.women_category = page.locator("a[href='#Women']")
         self.sub_dress_category = page.locator("#Women").get_by_role("link", name="Dress")
         self.sub_top_category = page.locator("#Women").get_by_role("link", name="Tops")
 
-        self.men_category = page.get_by_role("link", name="Men")
+        self.men_category = page.locator("a[href='#Men']")
         self.men_tshirt_category = page.locator("#Men").get_by_role("link", name="Tshirts")
         self.men_jeans_category = page.locator("#Men").get_by_role("link", name="Jeans")
 
