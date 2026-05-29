@@ -18,9 +18,20 @@ class ProductDetailsPage:
         self.product_condition = self.info_box.locator("p").filter(has_text="Condition:")
         self.product_brand = self.info_box.locator("p").filter(has_text="Brand:")
 
+        self.review_name = page.locator("#name")
+        self.review_email = page.locator("#email")
+        self.review_message = page.locator("#review")
+        self.review_button = page.locator("#button-review")
+
     def set_amount(self, amount: str):
         self.quantity_input.fill(amount)
 
     def click_add_to_cart(self):
         self.add_to_cart.click()
+
+    def submit_product_review(self, name, email, message):
+        self.review_name.fill(name)
+        self.review_email.fill(email)
+        self.review_message.fill(message)
+        self.review_button.click()
 

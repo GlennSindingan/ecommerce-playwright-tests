@@ -12,3 +12,4 @@ my_address_data = {
 }
 
 SUCCESS_MSG = "Congratulations! Your order has been confirmed!"
+REVIEW_MSG = "Thank you for your review."

@@ -48,14 +48,14 @@ def test_remove_product(page: Page):
     cart_page = CartPage(page)
     page.goto(HOMEPAGE_URL)
 
-    product_page.add_product_to_cart()
+    product_page.add_product_to_cart(0)
     product_page.click_view_cart()
     expect(cart_page.product_1_row).to_be_visible()
     cart_page.click_delete_button()
     expect(cart_page.product_1_row).to_be_hidden()
     expect(cart_page.empty_cart_message).to_be_visible()
 
-    # TODO fix error for this test case
+
     
 
 
