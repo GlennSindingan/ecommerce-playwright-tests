@@ -36,7 +36,7 @@ def test_product_quantity_cart(page: Page):
     page.goto(HOMEPAGE_URL)
 
     product_page.click_product_button()
-    expect(page).to_have_url("https://automationexercise.com/product_details/1")
+    expect(page).to_have_url(f"{HOMEPAGE_URL}product_details/1")
     product_details.set_amount("4")
 
     product_details.click_add_to_cart()

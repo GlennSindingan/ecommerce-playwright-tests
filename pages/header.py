@@ -7,7 +7,7 @@ class HeaderPage:
 
         # Header
         self.delete_link = page.get_by_role("link", name="Delete Account")
-        self.login_link = page.get_by_role("link", name=" Signup / Login")
+        self.login_link = page.get_by_role("link", name=" Signup / Login", exact=False)
         self.logout_link = page.get_by_role("link", name="Logout")
         self.product_link = page.get_by_role("link", name="Products")
         self.contact_link = page.get_by_role("link", name="Contact us")

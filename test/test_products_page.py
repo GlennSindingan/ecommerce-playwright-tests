@@ -12,9 +12,9 @@ def test_all_products_display(page: Page):
     page.goto(HOMEPAGE_URL)
 
     header_page.click_product_link()
-    expect(page).to_have_url("https://automationexercise.com/products")
+    expect(page).to_have_url(f"{HOMEPAGE_URL}products")
     expect(product_page.product_cards.first).to_be_visible()
-    assert product_page.product_cards.count() > 5
+    expect(product_page.product_cards.nth(5)).to_be_visible()
 
     product_page.click_product_button()
     expect(details_page.product_name).to_be_visible()

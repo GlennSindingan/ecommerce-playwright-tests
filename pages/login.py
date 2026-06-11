@@ -35,7 +35,7 @@ class LoginPage:
         self.city_name = page.locator("#city")
         self.zip_code = page.locator("#zipcode")
         self.mobile_number = page.locator("#mobile_number")
-        self. create_button = page.locator("[data-qa='create-account']")
+        self.create_button = page.locator("[data-qa='create-account']")
 
         # After account creation
         self.continue_button = page.locator("[data-qa='continue-button']")
