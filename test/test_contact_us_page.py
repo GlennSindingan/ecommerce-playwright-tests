@@ -1,12 +1,17 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page, Dialog, expect
 from pages.header import HeaderPage
 from pages.contact_us import ContactPage
-from url.config import LOGIN_URL, HOMEPAGE_URL
-from utils.test_data import my_address_data
+from url.config import HOMEPAGE_URL
 
 def test_contact_form(page: Page):
     contact_page = ContactPage(page)
     header_page = HeaderPage(page)
+
+    def handle_dialog(dialog: Dialog):
+        dialog.accept()
+
+
+    page.on("dialog", handle_dialog)
 
     page.goto(HOMEPAGE_URL)
 
@@ -19,3 +24,7 @@ def test_contact_form(page: Page):
     )
     contact_page.upload_file("utils/dummy_upload.txt")
     contact_page.click_submit_button()
+
+    page.wait_for_load_state("networkidle")
+    expect(contact_page.alert_message).to_be_visible()
+

@@ -13,3 +13,7 @@ my_address_data = {
 
 SUCCESS_MSG = "Congratulations! Your order has been confirmed!"
 REVIEW_MSG = "Thank you for your review."
+
+# Base Account
+LOGIN_EMAIL = "glenn010@gmail.com"
+LOGIN_PASSWORD = "glenn010"

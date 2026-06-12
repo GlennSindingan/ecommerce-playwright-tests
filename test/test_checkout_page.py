@@ -59,6 +59,8 @@ def test_checkout(page: Page):
     login_page.click_continue()
 
 
+# TODO refactor
+
 
 
 

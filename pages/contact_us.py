@@ -9,7 +9,8 @@ class ContactPage:
         self.contact_subject = page.locator("[data-qa='subject']")
         self.contact_message = page.locator("[data-qa='message']")
         self.upload_button = page.locator("input[name='upload_file']")
-        self.submit_button = page.locator("input[name='submit-button']")
+        self.submit_button = page.locator("[data-qa='submit-button']")
+        self.alert_message = page.locator(".status.alert.alert-success")
 
     def fill_contact_form(self, name: str, email: str, subject: str, message: str):
         self.contact_name.fill(name)
