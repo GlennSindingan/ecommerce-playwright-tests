@@ -40,6 +40,8 @@ class LoginPage:
         # After account creation
         self.continue_button = page.locator("[data-qa='continue-button']")
 
+        self.acc_created_msg = page.get_by_text("Account Created!")
+
     def account_login(self, email, password):
         self.login_email.fill(email)
         self.login_password.fill(password)
@@ -74,6 +76,11 @@ class LoginPage:
 
     def click_continue(self):
         self.continue_button.click()
+
+    def register_new_account(self, name: str, email: str, password: str, address_data: dict):
+        self.account_signup(name, email)
+        self.enter_account_info(name, password)
+        self.enter_address_info(address_data)
 
 
 

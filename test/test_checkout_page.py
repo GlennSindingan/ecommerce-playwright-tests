@@ -19,7 +19,7 @@ def test_checkout(page: Page):
     checkout_page = CheckoutPage(page)
     payment_page = PaymentPage(page)
 
-    page.goto(HOMEPAGE_URL)
+    page.goto(HOMEPAGE_URL, timeout=60000)
 
     product_page.add_product_to_cart(0)
     product_page.click_view_cart()
@@ -30,18 +30,18 @@ def test_checkout(page: Page):
 
     dynamic_email = f"wenglong_{time.time()}@gmail.com"
 
-    login_page.account_signup("wenglong", dynamic_email)
-    login_page.enter_account_info("wenglong", "wengdie322")
-    login_page.enter_address_info(my_address_data)
-
-    expect(page.get_by_text("Account Created!")).to_be_visible()
+    login_page.register_new_account(
+        name="wenglong",
+        email=dynamic_email,
+        password="wengdie322",
+        address_data=my_address_data
+    )
+    expect(login_page.acc_created_msg).to_be_visible()
     login_page.click_continue()
     expected_username = my_address_data["fname"]
     expect(header_page.get_logged_in_user_locator(expected_username)).to_be_visible()
     header_page.click_cart_link()
     cart_page.click_checkout_button()
-
-    # TODO add check description
 
     checkout_page.enter_comment("Thank u!")
     checkout_page.click_place_order()
@@ -58,8 +58,6 @@ def test_checkout(page: Page):
     expect(page.get_by_text("Account Deleted!")).to_be_visible()
     login_page.click_continue()
 
-
-# TODO refactor
 
 
 
