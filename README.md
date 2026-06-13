@@ -27,8 +27,8 @@ Ecommerce/
 │
 ├── pytest.ini
 ├── requirements.txt
-└── README.md
-
+└── README.md 
+```
 ## Automated BAU Flow Coverage
 This framework targets high-value Business-As-Usual (BAU) flows to ensure stability across core revenue-generating functionalities:
 - **User Management**: Registration, Account Login, Logout, and Clean Teardown (Account Deletion).
