@@ -12,7 +12,7 @@ def test_all_products_display(page: Page):
     page.goto(HOMEPAGE_URL)
 
     header_page.click_product_link()
-    expect(page).to_have_url(f"{HOMEPAGE_URL}products")
+    expect(page).to_have_url(f"{HOMEPAGE_URL}/products")
     expect(product_page.product_cards.first).to_be_visible()
     expect(product_page.product_cards.nth(5)).to_be_visible()
 

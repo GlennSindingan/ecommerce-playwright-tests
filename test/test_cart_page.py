@@ -33,10 +33,12 @@ def test_product_quantity_cart(page: Page):
     product_page = ProductPage(page)
     product_details = ProductDetailsPage(page)
     cart_page = CartPage(page)
-    page.goto(HOMEPAGE_URL)
+    header_page = HeaderPage(page)
 
+    page.goto(HOMEPAGE_URL)
+    header_page.click_product_link()
     product_page.click_product_button()
-    expect(page).to_have_url(f"{HOMEPAGE_URL}product_details/1")
+    expect(page).to_have_url(f"{HOMEPAGE_URL}/product_details/1")
     product_details.set_amount("4")
 
     product_details.click_add_to_cart()

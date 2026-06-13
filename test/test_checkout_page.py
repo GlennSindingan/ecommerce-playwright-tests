@@ -28,10 +28,10 @@ def test_checkout(page: Page):
     cart_page.click_checkout_button()
     cart_page.click_register_login()
 
-    dynamic_email = f"wenglong_{time.time()}@gmail.com"
+    dynamic_email = f"glenn_{time.time()}@gmail.com"
 
     login_page.register_new_account(
-        name="wenglong",
+        name="glenn",
         email=dynamic_email,
         password="wengdie322",
         address_data=my_address_data
