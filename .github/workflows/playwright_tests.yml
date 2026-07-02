@@ -26,11 +26,11 @@ jobs:
 
     - name: Ensure Playwright browser binaries are installed
       run: |
-        pytest -v --html=report.html --self-contained-html || true
+        python -m playwright install chromium --with-deps
 
     - name: Execute Playwright validation suites
       run: |
-        pytest -v
+        pytest -v --html=report.html --self-contained-html || true
 
     - name: Upload Test Execution Report Dashboard
       uses: actions/upload-artifact@v4
