@@ -33,7 +33,7 @@ jobs:
         pytest -v
 
     - name: Upload Test Execution Report Dashboard
-      uses: actions/actions-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: playwright-execution-report
         path: report.html
