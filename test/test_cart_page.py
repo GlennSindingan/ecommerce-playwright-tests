@@ -13,9 +13,7 @@ def test_add_to_cart(page: Page):
     page.goto(HOMEPAGE_URL)
 
     header_page.click_product_link()
-
     product_page.add_product_to_cart(0)
-
     product_page.click_continue_shopping_button()
 
     product_page.add_product_to_cart(1)
