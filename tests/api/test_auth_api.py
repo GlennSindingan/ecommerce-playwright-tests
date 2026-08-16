@@ -38,7 +38,7 @@ def test_create_user():
 
     user_data = {
         "name": "Glenn",
-        "email": "test@example.com",
+        "email": "glenn_test_987654@gmail.com",
         "password": "12345",
         "title": "Mr",
         "birth_date": "10",
@@ -60,6 +60,23 @@ def test_create_user():
     print("STATUS:", response.status_code)
     print("BODY:", response.text)
     print("URL:", response.url)
+
+def test_delete_account():
+    auth_api = AuthAPI()
+
+    response = auth_api.delete_user(
+        "glenn_test_987654@gmail.com",
+        "12345"
+    )
+    print(response.status_code)
+    print(response.text)
+
+    assert response.status_code == 200
+
+    wendie = response.json()
+
+    assert wendie["responseCode"] == 200
+    assert wendie["message"] == "Account deleted!"
 
 
 
