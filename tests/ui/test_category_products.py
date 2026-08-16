@@ -1,7 +1,4 @@
 from playwright.sync_api import Page, expect
-from pages.cart import CartPage
-from pages.header import HeaderPage
-from pages.products import ProductPage
 from pages.category_products import CategoryPage
 from url.config import HOMEPAGE_URL
 
