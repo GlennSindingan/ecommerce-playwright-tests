@@ -1,4 +1,5 @@
-from utils.test_data import USER_DATA, UPDATE_USER_DATA, BASE_USER_DATA, NO_USER_DATA
+from utils.test_data import USER_DATA, UPDATE_USER_DATA, BASE_USER_DATA, NO_USER_DATA, ANOTHER_BASE_USER_DATA
+import pytest
 
 
 def test_auth_api(auth_api):
@@ -72,7 +73,7 @@ def test_full_crud_cycle(auth_api):
     assert data["responseCode"] == 201
     assert data["message"] == "User created!"
 
-    get_user = auth_api.get_user_by_email("glenn_reedz@gmail.com")
+    get_user = auth_api.get_user_by_email(USER_DATA["email"])
     get_data = get_user.json()
     assert get_user.status_code == 200
     assert get_data["responseCode"] == 200
@@ -83,7 +84,7 @@ def test_full_crud_cycle(auth_api):
     assert update_user.status_code == 200
     assert update_data["responseCode"] == 200
 
-    get_updated_user = auth_api.get_user_by_email("glenn_reedz@gmail.com")
+    get_updated_user = auth_api.get_user_by_email(USER_DATA["email"])
     get_data = get_updated_user.json()
     assert get_updated_user.status_code == 200
     assert get_data["responseCode"] == 200
@@ -108,20 +109,35 @@ def test_full_crud_cycle(auth_api):
 
 # NEGATIVE TESTING
 
-def test_invalid_credentials(auth_api):
-
-    response = auth_api.verify_credentials(
-        "maryclaire@gmail.com",
-        "glenn00")
+@pytest.mark.parametrize(
+    "email, password",
+    [
+        ("maryclaire@gmail.com", "invalid123"),
+        ("kalapastangan@gmail.com", "wrong123"),
+        ("withoutu@gmail.com", "password123")
+    ]
+)
+def test_invalid_credentials(auth_api, email, password):
+    response = auth_api.verify_credentials(email, password)
 
     assert response.status_code == 200
+
     data = response.json()
+
     assert data["message"] == "User not found!"
     assert data["responseCode"] == 404
 
-def test_create_existing_user(auth_api):
 
-    response = auth_api.create_user(BASE_USER_DATA)
+@pytest.mark.parametrize(
+    "user_data",
+    [
+        BASE_USER_DATA,
+        ANOTHER_BASE_USER_DATA
+    ]
+)
+def test_create_existing_user(auth_api, user_data):
+
+    response = auth_api.create_user(user_data)
     assert response.status_code == 200
 
     data = response.json()
@@ -158,7 +174,7 @@ def test_update_non_existing_user(auth_api):
     assert data["responseCode"] == 404
     assert data["message"] == "Account not found!"
 
-    # TODO: ADD PARAMETERIZATION
+    # TODO: Continue full crud cycle | make it independent and reliable
 
 
 
