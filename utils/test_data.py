@@ -18,7 +18,7 @@ REVIEW_MSG = "Thank you for your review."
 LOGIN_EMAIL = "glenn010@gmail.com"
 
 
-#API Testing
+# API Testing
 
 USER_DATA = {
     "name": "Glenn",
@@ -43,7 +43,7 @@ USER_DATA = {
 UPDATE_USER_DATA = {
     "name": "black",
     "email": "mono_no_aware@gmail.com",
-    "password": "611611",
+    "password": "322322",
     "title": "Mr",
     "birth_date": "10",
     "birth_month": "7",
@@ -80,7 +80,6 @@ BASE_USER_DATA = {
     "mobile_number": "1234567890"
 }
 
-
 ANOTHER_BASE_USER_DATA = {
     "name": "Glenn",
     "email": "mono@gmail.com",
@@ -100,6 +99,8 @@ ANOTHER_BASE_USER_DATA = {
     "city": "Test City",
     "mobile_number": "1234567890"
 }
+
+
 NO_USER_DATA = {
     "name": "Glenn",
     "email": "happyness@gmail.com",

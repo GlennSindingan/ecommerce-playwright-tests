@@ -20,9 +20,6 @@ def test_post_product_negative():
     products_api = ProductsAPI()
     response = products_api.post_product_negative()
 
-    print(response.status_code)
-    print(response.text)
-
     assert response.status_code == 200
 
     data = response.json()
@@ -67,10 +64,6 @@ def test_search_product():
     data = response.json()
 
     assert data["responseCode"] == 200
-
-
-
-
 
 
 

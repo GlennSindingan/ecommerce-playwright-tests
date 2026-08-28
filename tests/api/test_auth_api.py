@@ -51,11 +51,8 @@ def test_delete_account(auth_api):
 
     response = auth_api.delete_user(
         "mono_no_aware@gmail.com",
-        "611611"
+        "322322"
     )
-    print(response.status_code)
-    print(response.text)
-
     assert response.status_code == 200
 
     data = response.json()
@@ -91,16 +88,15 @@ def test_full_crud_cycle(auth_api):
     assert get_data["user"]["first_name"] == "Black"
     assert get_data["user"]["last_name"] == "Hole"
 
-    delete_user = auth_api.delete_user(
-        "glenn_reedz@gmail.com",
-        "black123412"
-    )
+    delete_user = auth_api.delete_user(USER_DATA["email"], USER_DATA["password"])
+    assert delete_user.status_code == 200
+
     delete_data = delete_user.json()
     assert delete_user.status_code == 200
     assert delete_data["responseCode"] == 200
     assert delete_data["message"] == "Account deleted!"
 
-    get_deleted_user = auth_api.get_user_by_email("glenn_reedz@gmail.com")
+    get_deleted_user = auth_api.get_user_by_email(USER_DATA["email"])
     deleted_data = get_deleted_user.json()
     assert deleted_data["message"] == "Account not found with this email, try another email!"
     assert deleted_data["responseCode"] == 404
@@ -174,7 +170,6 @@ def test_update_non_existing_user(auth_api):
     assert data["responseCode"] == 404
     assert data["message"] == "Account not found!"
 
-    # TODO: Continue full crud cycle | make it independent and reliable
 
 
 
