@@ -9,6 +9,10 @@ def auth_api():
 @pytest.fixture
 def created_user(auth_api):
     response = auth_api.create_user(USER_DATA)
-    return response
 
-# TODO: add clean up and yield
+    yield response
+
+    auth_api.delete_user(
+        USER_DATA['email'],
+        USER_DATA['password']
+    )

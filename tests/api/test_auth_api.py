@@ -28,7 +28,7 @@ def test_create_user(auth_api):
     assert response.status_code == 200
     assert data["responseCode"] == 201
 
-def test_update_user_account(auth_api):
+def test_update_user_account(auth_api, created_user):
 
     response = auth_api.update_user(UPDATE_USER_DATA)
 
@@ -169,6 +169,12 @@ def test_update_non_existing_user(auth_api):
     data = response.json()
     assert data["responseCode"] == 404
     assert data["message"] == "Account not found!"
+
+
+def test_created_user(created_user):
+    print(created_user.text)
+    assert created_user.status_code == 200
+
 
 
 
